@@ -10,8 +10,6 @@ import TotalView from './TotalView';
 import EmptyCart from './EmptyCart';
 import CartItem from './CartItem';
 
-// import { post } from '../../utils/paytm';
-// import { payUsingPaytm } from '../../service/api';
 
 const Component = styled(Grid)(({ theme }) => ({
     padding: '30px 135px',

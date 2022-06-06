@@ -4,37 +4,36 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LoginDialog from "../Login/LoginDialog";
 import { DataContext } from "../../context/DataProvider";
 import Profile from "./Profile";
-import Badge from '@mui/material/Badge';
-import LoginIcon from '@mui/icons-material/Login';
-import {Link} from 'react-router-dom';
-import {useSelector} from 'react-redux';
+import Badge from "@mui/material/Badge";
+import LoginIcon from "@mui/icons-material/Login";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const Wrapper = styled(Box)(({theme})=>({
-  display: 'flex',
-  width:'100%',
-  justifyContent: 'center',
-  textTransform:'capitalize',
-  alignItems: 'center',
-  margin: '0 3% 0 auto',
-  '& > *': {
-    marginRight: '40px !important',
-    fontSize: '14px',
-    alignItems: 'center',
+const Wrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  width: "100%",
+  justifyContent: "center",
+  textTransform: "capitalize",
+  alignItems: "center",
+  margin: "0 3% 0 auto",
+  "& > *": {
+    marginRight: "40px !important",
+    fontSize: "14px",
+    alignItems: "center",
   },
-  [theme.breakpoints.down('md')]:{
-   display:'block',
-  }
+  [theme.breakpoints.down("md")]: {
+    display: "block",
+  },
 }));
 
-const Container = styled(Link)(({theme})=>({
-  display:'flex',
-  textDecoration:'none',
-  color:'inherit',
-  [theme.breakpoints.down('md')]:{
+const Container = styled(Link)(({ theme }) => ({
+  display: "flex",
+  textDecoration: "none",
+  color: "inherit",
+  [theme.breakpoints.down("md")]: {
     // display:'block',
-  }
+  },
 }));
-  
 
 const LoginButton = styled(Button)`
   color: #2874f0;
@@ -44,13 +43,13 @@ const LoginButton = styled(Button)`
   border-radius: 3px;
   box-shadow: none;
   font-weight: 600;
-  color:#fff;
+  color: #fff;
   height: 32px;
 `;
 
 const CustomButton = () => {
   const [open, setOpen] = useState(false);
-const {cartItems} =useSelector(state=>state.cart);
+  const { cartItems } = useSelector((state) => state.cart);
   const { account, setAccount } = useContext(DataContext);
   const openDialog = () => {
     setOpen(true);
@@ -61,23 +60,19 @@ const {cartItems} =useSelector(state=>state.cart);
       {account ? (
         <Profile account={account} setAccount={setAccount} />
       ) : (
-        <LoginButton variant="contained" onClick={() => openDialog()} >
-        <LoginIcon style={{paddingRight: '10px'}}/>
+        <LoginButton variant="contained" onClick={() => openDialog()}>
+          <LoginIcon style={{ paddingRight: "10px" }} />
           Login
-         
         </LoginButton>
       )}
-  
-      <Typography style={{cursor:'pointer'}}>
-        Become a Seller
-      </Typography>
-      <Typography style={{cursor:'pointer'}}>More</Typography>
-      <Container to='/Cart'>
-      <Badge badgeContent={cartItems.length} color="secondary">
-        <ShoppingCartIcon />
+
+      <Typography style={{ cursor: "pointer" }}>Become a Seller</Typography>
+      <Typography style={{ cursor: "pointer" }}>More</Typography>
+      <Container to="/Cart">
+        <Badge badgeContent={cartItems.length} color="secondary">
+          <ShoppingCartIcon />
         </Badge>
-        <Typography style={{marginLeft:10}}>Cart</Typography>
-        
+        <Typography style={{ marginLeft: 10 }}>Cart</Typography>
       </Container>
       <LoginDialog open={open} setOpen={setOpen} />
     </Wrapper>

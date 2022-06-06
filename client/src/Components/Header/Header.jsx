@@ -1,23 +1,30 @@
-import React ,{useState} from "react";
-import { AppBar,List,ListItem,ListItemIcon,ListItemButton, Toolbar,Drawer, Box,Typography, styled,IconButton } from "@mui/material";
+import React, { useState } from "react";
+import {
+  AppBar,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemButton,
+  Toolbar,
+  Drawer,
+  Box,
+  Typography,
+  styled,
+  IconButton,
+} from "@mui/material";
 import Search from "./Search";
-import InboxIcon from '@mui/icons-material/Inbox';
-import MenuIcon from '@mui/icons-material/Menu';
-import MailIcon from '@mui/icons-material/Mail';
+import InboxIcon from "@mui/icons-material/Inbox";
+import MenuIcon from "@mui/icons-material/Menu";
+import MailIcon from "@mui/icons-material/Mail";
 import CustomButton from "./CustomButton";
 import { Link } from "react-router-dom";
-
-// import List from '@mui/material/List';
-// import ListItem from '@mui/material/ListItem';
-// import ListItemButton from '@mui/material/ListItemButton';
-// import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
+import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
 
 const StyledHeader = styled(AppBar)`
   background: #874fff0;
   height: 56px;
-  display:flex;
+  display: flex;
   justify-content: center;
 `;
 
@@ -39,25 +46,24 @@ const PlusImage = styled("img")({
   marginLeft: 4,
 });
 
-const CustomButtonWrapper = styled(Box)(({theme})=>({
-  margin: '0 2% 0 2%',
- 
-  [theme.breakpoints.down('md')]:{
-    display:'none',
-  }
+const CustomButtonWrapper = styled(Box)(({ theme }) => ({
+  margin: "0 2% 0 2%",
+
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
 }));
 
-const MenuButton=styled(IconButton)(({theme})=>({
-  display:'none',
-  [theme.breakpoints.down('md')]:{
-    display:'block',
-    
-  }
-}))
+const MenuButton = styled(IconButton)(({ theme }) => ({
+  display: "none",
+  [theme.breakpoints.down("md")]: {
+    display: "block",
+  },
+}));
 
-const DrawerDesign=styled(Drawer)`
-  height:'300px';
-  background-color:'red';
+const DrawerDesign = styled(Drawer)`
+  height: "300px";
+  background-color: "red";
 `;
 
 const Header = () => {
@@ -66,42 +72,39 @@ const Header = () => {
   const subURL =
     "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png";
 
-    const [open,setOpen] =useState(false);
+  const [open, setOpen] = useState(false);
 
-const handleOpen=()=>{
- setOpen(true);
-}
-const handleClose=()=>{
-  setOpen(false);
-}
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-const list=()=>(
-  <Box  style={{ width: 200 }}>
-    <List onClick={handleOpen}>
-    <ListItem>
-      
-          <CustomButton/>
-      
-      </ListItem>
-    </List>
- 
-  </Box>
-);
+  const list = () => (
+    <Box style={{ width: 200 }}>
+      <List onClick={handleOpen}>
+        <ListItem>
+          <CustomButton />
+        </ListItem>
+      </List>
+    </Box>
+  );
 
   return (
     <StyledHeader>
       <Toolbar>
-      <MenuButton style={{color:'inherit'}} onClick={handleOpen}>
-        <MenuIcon/>
-      </MenuButton>
-      <DrawerDesign open={open} onClose={handleClose}>
-      <Toolbar style={{fontSize:'18px',fontWeight:'600'}}>Welcome to Login</Toolbar>
-      <Divider />
-      {list()}
-      </DrawerDesign>
-
-
-      <Component to="/">
+        <MenuButton style={{ color: "inherit" }} onClick={handleOpen}>
+          <MenuIcon />
+        </MenuButton>
+        <DrawerDesign open={open} onClose={handleClose}>
+          <Toolbar style={{ fontSize: "18px", fontWeight: "600" }}>
+            Welcome to Login
+          </Toolbar>
+          <Divider />
+          {list()}
+        </DrawerDesign>
+        <Component to="/">
           <img src={logoURL} alt="flipkart_logo" style={{ width: 75 }} />
           <Box style={{ display: "flex" }}>
             <SubHeading>
@@ -113,7 +116,6 @@ const list=()=>(
             <PlusImage src={subURL} alt="sub-logo" />
           </Box>
         </Component>
-
         <Search />
         <CustomButtonWrapper>
           <CustomButton />
